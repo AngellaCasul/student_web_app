@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, redirect
 
+<<<<<<< HEAD
 app = Flask(_name_)
+=======
+app = Flask(__name__)
+>>>>>>> acd3b85dbea96a2d30b2624a1a05a3269a9fffa9
 
 students = []
 
@@ -15,5 +19,9 @@ def index():
         return redirect("/")
     return render_template("index.html", students=students)
 
+<<<<<<< HEAD
 if _name_ == "_main_":
+=======
+if __name__ == "__main__":
+>>>>>>> acd3b85dbea96a2d30b2624a1a05a3269a9fffa9
     app.run(debug=True)
