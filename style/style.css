@@ -1,66 +1,43 @@
 body {
-font-family: Arial, sans-serif;
-background-color: #f8f8f8;
-}
-
-.container {
-    width: 400px;
+    font-family: Arial, sans-serif;
+    max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h2, h3 {
-    text-align: center;
-}
-
-label {
-    font-weight: bold;
-}
-
-input[type="text"]
-input[type="number"] {
+input, select, button {
     width: 100%;
-    padding: 8px;
-    margin-top: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
 }
 
 button {
-    width: 100%;
-    padding: 10px;
-    background-color:#0081ff;
+    background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #005bb3;
+.hidden {
+    display: none;
 }
 
-hr {
-    margin: 20px 0;
-}
-
-ul{
+ul {
     list-style-type: none;
     padding: 0;
 }
 
 li {
-    padding: 8px;
-    margin-bottom: 5px;
-    border-radius: 4px;
+    padding: 10px;
+    margin: 5px 0;
 }
 
-.pass {
-    background-color: #d9edd9;
-    color: #165722;
-}
-
-.fail {
-    background-color: #f8cfd9;
-    color: #721c24;
+.remove-btn {
+    width: auto;
+    padding: 3px 8px;
+    margin: 0;
+    font-size: 12px;
+    background-color: #f44336;
 }

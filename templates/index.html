@@ -4,35 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Grade Web App</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
 </head>
 <body>
     <h2>Student Grade Management</h2>
 
-    <form method="POST" onsubmit="return validateForm()">
-        <input type="text" id="name" name="name" placeholder="Student Name">
-        <input type="number" id="grade" name="grade" placeholder="Grade">
-        <button type="submit">Add Student</button>
+    <form method="POST" action="/add" onsubmit="return validateForm()">
+        <input type="text" id="name" name="name" placeholder="Student Name" oninput="checkName()">
+        
+        <input type="date" id="date" name="date" class="hidden" onchange="checkDate()">
+        
+        <select id="subject" name="subject" class="hidden" onchange="checkSubject()">
+            <option value="">Select Subject</option>
+            <option value="Integrated Programming and Technologies">Integrated Programming and Technologies</option>
+            <option value="Introduction to Programming">Introduction to Programming</option>
+            <option value="Web Fundamentals">Web Fundamentals</option>
+        </select>
+        
+        <input type="email" id="email" name="email" placeholder="Email Address" class="hidden" oninput="checkEmail()">
+        
+        <input type="number" id="grade" name="grade" placeholder="Grade" class="hidden" oninput="checkGrade()">
+        
+        <button type="submit" class="hidden">Add Student</button>
     </form>
 
     <hr>
 
     <h3>Student List</h3>
     <ul>
-        {% for student in students %}
+        {% for index, student in students %}
             {% if student.status == 'Passed' %}
                 <li style="color: green;">
-                    {{ student.name }} - {{ student.grade }} ({{ student.status }})
+                    {{ student.name }} - {{ student.date }} - {{ student.subject }} - {{ student.email }} - {{ student.grade }} ({{ student.status }})
+                    <form method="POST" action="/delete/{{ index }}" style="display: inline; margin-left: 10px;">
+                        <button type="submit" class="remove-btn">Remove</button>
+                    </form>
                 </li>
             {% else %}
                 <li style="color: red;">
-                    {{ student.name }} - {{ student.grade }} ({{ student.status }})
+                    {{ student.name }} - {{ student.date }} - {{ student.subject }} - {{ student.email }} - {{ student.grade }} ({{ student.status }})
+                    <form method="POST" action="/delete/{{ index }}" style="display: inline; margin-left: 10px;">
+                        <button type="submit" class="remove-btn">Remove</button>
+                    </form>
                 </li>
             {% endif %}
         {% endfor %}
     </ul>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='script/script.js') }}"></script>
 </body>
 </html>
-    
